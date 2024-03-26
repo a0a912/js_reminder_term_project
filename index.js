@@ -7,6 +7,9 @@ const path = require("path");
 // Require the express-ejs-layouts module
 const ejsLayouts = require("express-ejs-layouts");
 // Require the reminder_controller module from the specified path
+const session = require("express-session");
+
+
 const reminderController = require("./controller/reminder_controller");
 // Require the auth_controller module from the specified path
 const authController = require("./controller/auth_controller");
