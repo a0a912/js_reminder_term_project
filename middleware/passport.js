@@ -1,10 +1,10 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 
-const userModel = require("../models/userModel").userModel;
+const userModel = require("../database").userModel;
 
-const userController = require("../controllers/userController");
-const authController = require("../controllers/auth_controller");
+const userController = require("../controller/userController");
+const authController = require("../controller/auth_controller");
 const reminderController = require("../controller/reminder_controller");
 
   const localLogin = new LocalStrategy(
@@ -43,4 +43,5 @@ passport.deserializeUser(async function (id, done) {
   }
 });
 
+//Fix this. This is from Github
 module.exports = passport.use(localLogin).use(githubLogin);

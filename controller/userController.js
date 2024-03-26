@@ -1,4 +1,6 @@
-const userModel = require("../models/userModel").userModel;
+//Double Check if this import is correct
+//const userModel = require("../models/userModel").userModel;
+const userModel = require("../database").userModel;
 
 const getUserByEmailIdAndPassword = (email, password) => {
   let user = userModel.findOne(email);
