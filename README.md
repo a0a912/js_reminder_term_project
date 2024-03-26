@@ -14,6 +14,8 @@ Ahmed Ali:
 
 -Merged test and main branches
 
+-Implemented Database Function and logic
+
 
 Caleb Campbell:
 -bought slurpee
@@ -21,4 +23,6 @@ Caleb Campbell:
 
 Alvin Sin:
 -Implemented Delete Function
+
+-Implemented Update function
 
