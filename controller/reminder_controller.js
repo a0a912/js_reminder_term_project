@@ -1,12 +1,14 @@
 // Importing the database module
 let database = require("../database");
+let { Database, userModel } = require("../database");
 
+user = userModel.findOne("person2");
 // Defining the remindersController object
 let remindersController = {
   // GET /reminders
   // Renders the reminder index page with the list of reminders from the database
   list: (req, res) => {
-    res.render("reminder/index", { reminders: database.cindy.reminders });
+    res.render("reminder/index", { reminders: user.reminders });
   },
 
   // GET /reminders/new

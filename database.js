@@ -32,5 +32,30 @@ let Database = {
 //for user in database
 // if username = database.user
 
+const userModel = {
+  findOne: (username) => {
+    const user = Object.values(Database).find((user) => user.username === username);
+    if (user) {
+      return user;
+    }
+    throw new Error(`Couldn't find user with username: ${username}`);
+  },
+  findById: (id) => {
+    const user = Object.values(Database).find((user) => user.userid === id);
+    if (user) {
+      return user;
+    }
+    throw new Error(`Couldn't find user with id: ${id}`);
+  },
+  findAll: () => {
+    // Simulate asynchronous behavior by wrapping in a Promise
+    return new Promise((resolve, reject) => {
+      // Simulate delay with setTimeout
+      setTimeout(() => {
+        resolve(Database); // Resolve with all users from the database
+      }, 100); // Delay for 100 milliseconds
+    });
+  },
+};
 
-module.exports = Database;
+module.exports = { userModel, Database };
