@@ -10,12 +10,15 @@ Ahmed Ali:
 
 -Set up Collab Features. YAY.
 
+-Added Way too much comments to Delete Function
+
+-Merged test and main branches
+
 
 Caleb Campbell:
-bought slurpee
+-bought slurpee
 
 
 Alvin Sin:
-
-Testing again
+-Implemented Delete Function
 
