@@ -10,6 +10,7 @@ Ahmed Ali:
 
 
 Caleb Campbell:
+bought slurpee
 
 
 Alvin Sin:
