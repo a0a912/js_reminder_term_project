@@ -68,4 +68,51 @@ const userModel = {
   },
 };
 
-module.exports = { userModel, Database };
+let database_2 = {
+  cindy: {
+    reminders: [
+      {
+        id: 1,
+        title: "Grocery shopping",
+        description: "Buy milk and bread from safeway",
+        completed: false,
+      },
+    ],
+    user_details: {
+      userid: 1,
+      username: "cindy",
+      password: "1234",
+      email: "cindy@email.com",
+    }
+  },
+  person2: {
+    reminders: [  {
+      id: 1,
+      title: "Grocery shopping",
+      description: "Buy milk and bread from safeway",
+      completed: false,
+    }, ],
+    user_details: {
+      userid: 2,
+      username: "person2",
+      password: "1234",
+      email: "person2@email.com",
+    }
+  },
+  person3: {
+    reminders: [  {
+      id: 1,
+      title: "Grocery shopping",
+      description: "Buy milk and bread from safeway",
+      completed: false,
+    },],
+    user_details: {
+      userid: 3,
+      username: "person3",
+      password: "1234",
+      email: "person3@email.com",
+    }
+  },
+}
+
+module.exports = { userModel, Database, database_2 };
