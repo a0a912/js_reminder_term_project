@@ -8,6 +8,10 @@ let Database = {
         completed: false,
       },
     ],
+    userid: 1,
+    username: "Cindy",
+    password: "1234",
+    email: "cindy@email.com",
   },
 };
 
