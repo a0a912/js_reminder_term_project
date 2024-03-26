@@ -9,7 +9,7 @@ let Database = {
       },
     ],
     userid: 1,
-    username: "Cindy",
+    username: "cindy",
     password: "1234",
     email: "cindy@email.com",
   },
