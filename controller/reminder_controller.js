@@ -59,6 +59,13 @@ let remindersController = {
   // Implementation is missing
   update: (req, res) => {
     // implementation here 👈
+    let reminderToFind = req.params.id;
+    let searchResult = database.cindy.reminders.find(function (reminder) {
+      return reminder.id == reminderToFind;
+    });
+    searchResult.title = req.body.title;
+    searchResult.description = req.body.description;
+    res.redirect("/reminders");
   },
 
   // DELETE /reminders/:id
