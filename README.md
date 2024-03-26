@@ -12,6 +12,8 @@ Ahmed Ali:
 
 -Added Way too much comments to Delete Function
 
+-Merged test and main branches
+
 
 Caleb Campbell:
 -bought slurpee
