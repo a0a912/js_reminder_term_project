@@ -65,6 +65,7 @@ let remindersController = {
     });
     searchResult.title = req.body.title;
     searchResult.description = req.body.description;
+    searchResult.completed = req.body.completed === "true";
     res.redirect("/reminders");
   },
 
