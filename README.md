@@ -12,10 +12,9 @@ Ahmed Ali:
 
 
 Caleb Campbell:
-bought slurpee
+-bought slurpee
 
 
 Alvin Sin:
-
-Testing again
+-Implemented Delete Function
 

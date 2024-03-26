@@ -66,11 +66,21 @@ let remindersController = {
   // Implementation is missing
   delete: (req, res) => {
     // implementation here 👈
+    // Get the ID of the reminder to be deleted from the request parameters
     let reminderToFind = req.params.id;
+    // Find the reminder in the 'reminders' array of the 'cindy' object in the database
+    // using the 'find' method and a callback function that checks if the 'id' of the reminder
+    // matches the 'reminderToFind'
     let searchResult = database.cindy.reminders.find(function (reminder) {
       return reminder.id == reminderToFind;
     });
+    // Remove the found reminder from the 'reminders' array using the 'splice' method
+    // The 'splice' method takes two arguments: the index at which to start removing elements
+    // and the number of elements to remove. In this case, we are removing one element
+    // starting at the index of the 'searchResult'
+    //NOTE: This only removes Cindy's stuff. Later, we need to set it up to remove any target.
     database.cindy.reminders.splice(searchResult, 1);
+    // Redirect the user to the '/reminders' route after the reminder has been deleted
     res.redirect("/reminders");
   },
 };
