@@ -10,8 +10,3 @@ Ahmed Ali:
 
 
 Caleb Campbell:
-
-
-
-
-Jess with an E:
