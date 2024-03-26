@@ -10,6 +10,8 @@ Ahmed Ali:
 
 -Set up Collab Features. YAY.
 
+-Added Way too much comments to Delete Function
+
 
 Caleb Campbell:
 -bought slurpee
