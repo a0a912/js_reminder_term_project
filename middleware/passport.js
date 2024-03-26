@@ -1,27 +1,11 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-const GithubStrategy = require("passport-github2").Strategy;
+
 const userModel = require("../models/userModel").userModel;
 
 const userController = require("../controllers/userController");
-var GITHUB_CLIENT_ID = "05fa5f192a9df29a8fe4";
-var GITHUB_CLIENT_SECRET = "781d67f4315daac6b0b5d5d852e1db6517fafe94";
-var GITHUB_CALLBACK_URL = "http://localhost:8000/auth/github/callback";
-const githubLogin = new GithubStrategy({
-
-    clientID: GITHUB_CLIENT_ID,
-    clientSecret: GITHUB_CLIENT_SECRET,
-    callbackURL: GITHUB_CALLBACK_URL
-  },
-  function(accessToken, refreshToken, profile, done) {
-    // console.log("Passport.js profile: ", profile);
-    const userModelOutput = userModel.findOrCreate(profile, function (err, user) {
-      return done(err, user);
-    })
-    
-  }
-
-  );
+const authController = require("../controllers/auth_controller");
+const reminderController = require("../controller/reminder_controller");
 
   const localLogin = new LocalStrategy(
     {
