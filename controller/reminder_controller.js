@@ -22,13 +22,13 @@ let remindersController = {
   // If the reminder is not found, renders the reminder index page with the list of reminders
   listOne: (req, res) => {
     let reminderToFind = req.params.id;
-    let searchResult = database.cindy.reminders.find(function (reminder) {
+    let searchResult = database.Database.cindy.reminders.find(function (reminder) {
       return reminder.id == reminderToFind;
     });
     if (searchResult != undefined) {
       res.render("reminder/single-reminder", { reminderItem: searchResult });
     } else {
-      res.render("reminder/index", { reminders: database.cindy.reminders });
+      res.render("reminder/index", { reminders: database.Database.cindy.reminders });
     }
   },
 
@@ -37,12 +37,12 @@ let remindersController = {
   // Redirects to the reminders index page
   create: (req, res) => {
     let reminder = {
-      id: database.cindy.reminders.length + 1,
+      id: database.Database.cindy.reminders.length + 1,
       title: req.body.title,
       description: req.body.description,
       completed: false,
     };
-    database.cindy.reminders.push(reminder);
+    database.Database.cindy.reminders.push(reminder);
     res.redirect("/reminders");
   },
 
@@ -50,7 +50,7 @@ let remindersController = {
   // Renders the reminder edit page with the details of the reminder with the specified id
   edit: (req, res) => {
     let reminderToFind = req.params.id;
-    let searchResult = database.cindy.reminders.find(function (reminder) {
+    let searchResult = database.Database.cindy.reminders.find(function (reminder) {
       return reminder.id == reminderToFind;
     });
     res.render("reminder/edit", { reminderItem: searchResult });
@@ -73,7 +73,7 @@ let remindersController = {
     // Find the reminder in the 'reminders' array of the 'cindy' object in the database
     // using the 'find' method and a callback function that checks if the 'id' of the reminder
     // matches the 'reminderToFind'
-    let searchResult = database.cindy.reminders.find(function (reminder) {
+    let searchResult = database.Database.cindy.reminders.find(function (reminder) {
       return reminder.id == reminderToFind;
     });
     // Remove the found reminder from the 'reminders' array using the 'splice' method
@@ -81,7 +81,7 @@ let remindersController = {
     // and the number of elements to remove. In this case, we are removing one element
     // starting at the index of the 'searchResult'
     //NOTE: This only removes Cindy's stuff. Later, we need to set it up to remove any target.
-    database.cindy.reminders.splice(searchResult, 1);
+    database.Database.cindy.reminders.splice(searchResult, 1);
     // Redirect the user to the '/reminders' route after the reminder has been deleted
     res.redirect("/reminders");
   },
