@@ -14,6 +14,13 @@ Ahmed Ali:
 
 -Merged test and main branches
 
+-Implemented Database Function and logic
+
+-Implemented Passport.
+-Implemented Login
+-Reworked Database to Match Prof's code.
+-Yeah. We're all caught up
+
 
 Caleb Campbell:
 -bought slurpee
@@ -22,4 +29,6 @@ Caleb Campbell:
 Alvin Sin:
 -Implemented Delete Function (First Step without changing the DB)
 -Implemented Update Function (First Step without changing the DB)
+
+-Implemented Update function
 

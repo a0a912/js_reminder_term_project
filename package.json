@@ -19,6 +19,8 @@
     "express": "^4.14.0",
     "express-ejs-layouts": "^2.2.0",
     "method-override": "^2.3.7",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.19.4",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0"
   }
 }
