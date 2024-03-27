@@ -2,8 +2,8 @@ let Database = [
   {
     id: 1,
     name: "Cindy Doe",
-    email: "cindy123@gmail.com",
-    password: "test",
+    email: "cindy@gmail.com",
+    password: "123",
     role: "admin",
     reminders: [
       {

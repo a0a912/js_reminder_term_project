@@ -14,7 +14,7 @@ module.exports = {
     if (!req.isAuthenticated()) {
       return next();  // Move to the next middleware
     }
-    res.redirect("/dashboard");  // Redirect to the dashboard
+    res.redirect("/reminders");  // Redirect to the reminders
   },
 
   // Middleware to check if the user is an admin

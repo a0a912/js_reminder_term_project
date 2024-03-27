@@ -14,6 +14,7 @@ let authController = {
   loginSubmit: passport.authenticate("local", {
     successRedirect: "/reminders",
     failureRedirect: "/login",
+    failureMessage: "Invalid username or password",
   }),
 
   registerSubmit: (req, res) => {
