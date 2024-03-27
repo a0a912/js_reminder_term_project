@@ -16,6 +16,11 @@ Ahmed Ali:
 
 -Implemented Database Function and logic
 
+-Implemented Passport.
+-Implemented Login
+-Reworked Database to Match Prof's code.
+-Yeah. We're all caught up
+
 
 Caleb Campbell:
 -bought slurpee
