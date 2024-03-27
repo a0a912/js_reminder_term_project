@@ -8,6 +8,9 @@ const path = require("path");
 const ejsLayouts = require("express-ejs-layouts");
 // Require the reminder_controller module from the specified path
 const session = require("express-session");
+const passport = require("./middleware/passport");
+
+const { forwardAuthenticated, ensureAuthenticated, isAdmin } = require("./middleware/checkAuth");
 
 
 const reminderController = require("./controller/reminder_controller");
@@ -17,11 +20,29 @@ const authController = require("./controller/auth_controller");
 // Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, "public")));
 
+app.use(
+    session({
+      secret: "secret",
+      resave: false,
+      saveUninitialized: false,
+      cookie: {
+        httpOnly: true,
+        secure: false,
+        maxAge: 24 * 60 * 60 * 1000,
+      },
+    })
+);
+
+
 // Parse incoming request bodies with urlencoded payloads
 app.use(express.urlencoded({ extended: false }));
 
 // Use EJS layouts for rendering views
 app.use(ejsLayouts);
+
+//Initialize stuff
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Set the view engine to EJS
 app.set("view engine", "ejs");
@@ -40,7 +61,7 @@ app.post("/reminder/update/:id", reminderController.update);
 app.post("/reminder/delete/:id", reminderController.delete);
 // 👌 Ignore for now
 app.get("/register", authController.register);
-app.get("/login", authController.login);
+app.get("/login",forwardAuthenticated ,authController.login);
 app.post("/register", authController.registerSubmit);
 app.post("/login", authController.loginSubmit);
 

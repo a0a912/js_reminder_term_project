@@ -10,6 +10,6 @@ for (user in database) {
 
 */
 
-console.log(database.Database.cindy.userid)
+//console.log(database.Database.cindy.userid)
 console.log(database.Database.cindy.reminders)
 
