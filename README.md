@@ -21,9 +21,12 @@ Ahmed Ali:
 -Reworked Database to Match Prof's code.
 -Yeah. We're all caught up
 
+-Implemented logout button
+
 
 Caleb Campbell:
 -bought slurpee
+-Implemented some functions
 
 
 Alvin Sin:
