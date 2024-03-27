@@ -63,6 +63,7 @@ let remindersController = {
   // PUT /reminders/:id
   // Updates the reminder with the specified id in the database with the provided data
   update: (req, res) => {
+
     // Get the id of the reminder to update
     let reminderToUpdate = req.params.id;
     let user = req.user
@@ -82,6 +83,7 @@ let remindersController = {
     }
 
     // Redirect the user back to the reminders list
+
     res.redirect("/reminders");
   },
 

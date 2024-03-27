@@ -27,7 +27,8 @@ Caleb Campbell:
 
 
 Alvin Sin:
--Implemented Delete Function
+-Implemented Delete Function (First Step without changing the DB)
+-Implemented Update Function (First Step without changing the DB)
 
 -Implemented Update function
 
