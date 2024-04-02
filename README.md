@@ -27,7 +27,8 @@ Ahmed Ali:
 Caleb Campbell:
 -bought slurpee
 -Implemented some functions
-
+-Attempting to implement an admin dashboard
+-Watched the starter code videos
 
 Alvin Sin:
 -Implemented Delete Function (First Step without changing the DB)
