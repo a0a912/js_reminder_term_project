@@ -1,0 +1,60 @@
+<!-- Navigation bar with a collapsible menu -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <!-- Brand or logo of the navigation bar -->
+  <a class="navbar-brand" href="/reminders">Reminder List</a>
+
+  <!-- Button to toggle the collapse of the menu -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <!-- Icon for the toggle button -->
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Collapsible menu -->
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <!-- Navigation links -->
+    <div class="navbar-nav">
+      <!-- Link to the reminder list page -->
+      <a class="nav-item nav-link" href="/reminders">Reminder List</a>
+
+      <!-- Link to create a new reminder -->
+      <a class="nav-item nav-link" href="/reminder/new">Create</a>
+    </div>
+  </div>
+</nav>
+<h1 class="mt-4">Admin Dashboard</h1>
+<p class="lead mb-3">Welcome Admin <%= user.name %></p>
+<form id="logoutForm" action="/logout" method="POST">
+  <button type="submit" class="btn btn-secondary">Logout</button>
+</form>
+
+<% if (sessionStore && sessionStore.sessions) { %>
+  <% Object.keys(sessionStore.sessions).forEach(sessionId => { %>
+    <% const sessionData = JSON.parse(sessionStore.sessions[sessionId]); %>
+    <div class="session-info">
+      <h2>Session Information</h2>
+      <strong>Session ID:</strong> <%= sessionId %><br>
+      <strong>User ID:</strong> <%= sessionData.passport.user %><br>
+      <!-- Display other relevant session information, if any -->
+      <form id="revokeForm<%= sessionId %>" action="/revoke-session/<%= sessionId %>" method="POST" style="display: inline;">
+        <input type="hidden" name="sessionId" value="<%= sessionId %>">
+        <button type="submit" class="btn btn-danger" onclick="confirmRevoke('<%= sessionId %>')">Revoke Session</button>
+      </form>
+    </div>
+  <% }); %>
+<% } else { %>
+  <p>No active sessions found.</p>
+<% } %>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Event delegation for dynamically loaded content
+    document.addEventListener("click", function(event) {
+      if (event.target.matches(".btn-danger")) {
+        var sessionId = event.target.getAttribute("data-session-id");
+        if (sessionId && confirm("Are you sure you want to revoke session " + sessionId + "?")) {
+          document.getElementById("revokeForm" + sessionId).submit();
+        }
+      }
+    });
+  });
+</script>
