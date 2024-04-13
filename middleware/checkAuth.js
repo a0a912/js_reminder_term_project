@@ -22,6 +22,6 @@ module.exports = {
     if (req.user && req.user.role === 'admin') {
       return next();  // Move to the next middleware
     }
-    res.redirect("/admin"); // Redirect to the admin page
+    res.status(403).send("Access denied"); // Send a 403 Forbidden status and message
   }
 };

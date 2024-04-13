@@ -21,7 +21,8 @@
                 <div class="session-info">
                     <h2>Session Information</h2>
                     <strong>Session ID:</strong> <%= sessionId %><br>
-                    <strong>User ID:</strong> <%= sessionData.passport.user %><br>
+                    <strong>User ID:</strong> <%= sessionData.passport.user.id %><br>
+                    <strong>Name</strong> <%= sessionData.passport.user.name %><br>
                     <form id="revokeForm<%= sessionId %>" action="/revoke-session/<%= sessionId %>" method="POST" style="display: inline;">
                         <input type="hidden" name="sessionId" value="<%= sessionId %>">
                         <button type="submit" class="btn btn-danger" onclick="confirmRevoke('<%= sessionId %>')">Revoke Session</button>

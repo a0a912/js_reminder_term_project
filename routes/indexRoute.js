@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 const { ensureAuthenticated, isAdmin } = require("../middleware/checkAuth");
 
+
 // Route to render the index page
 router.get("/", (req, res) => {
     //res.send("Hello World!");
@@ -11,17 +12,19 @@ router.get("/", (req, res) => {
 
 // Route to render the dashboard page for authenticated users
 router.get("/dashboard", ensureAuthenticated, (req, res) => {
-  res.render("dashboard", {
+  res.render("layout", {
     user: req.user,
     sessionStore: req.sessionStore,
   });
 });
 
 // Route to render the admin page for admin users only
-router.get("/admin", isAdmin, (req, res) => {
-  res.render("admin", {
+router.get("/admin", ensureAuthenticated, isAdmin, (req, res) => {
+  res.render("layout_admin", {
     user: req.user,
-    sessionStore: req.sessionStore
+    sessionStore: req.sessionStore,
+    role: req.user.role,
+    name: req.user.name
   });
 });
 
@@ -34,8 +37,10 @@ router.get("/check_admin", ensureAuthenticated, check_admin, (req, res) => {
 // Function to check if the user is an admin and redirect them accordingly
 function check_admin(req, res) {
   if (req.user.role === 'admin') {
+    console.log("User is an admin");
     res.redirect("/admin");
   } else {
+    console.log("User is not an admin");
     res.redirect("/dashboard");
   }
 }

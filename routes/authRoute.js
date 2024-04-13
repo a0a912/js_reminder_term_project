@@ -45,7 +45,7 @@ router.get('/logout', (req, res) => {
 // Route to handle GitHub authentication callback
 router.get('/github/callback',
     passport.authenticate('github', {
-        successRedirect: '/', // Redirect to home page on successful GitHub authentication
+        successRedirect: '/check_admin', // Redirect to home page on successful GitHub authentication
         failureRedirect: '/login', // Redirect back to login page if GitHub authentication fails
         failureMessage: true }), // Display failure message if GitHub authentication fails
     function(req, res) {
