@@ -34,6 +34,26 @@ router.get("/check_admin", ensureAuthenticated, check_admin, (req, res) => {
   // The user is redirected based on their role.
 });
 
+router.post("/revoke-session/:sessionId", isAdmin, (req, res) => {
+  const sessionId = req.params.sessionId;
+  if (req.sessionStore && req.sessionStore.destroy) {
+    req.sessionStore.destroy(sessionId, (err) => {
+      if (err) {
+        console.error("Error revoking session:", err);
+        // Handle error appropriately, maybe send an error response
+        res.status(500).send("Error revoking session");
+      } else {
+        // Session successfully revoked, redirect back to admin dashboard
+        res.redirect("/admin");
+      }
+    });
+  } else {
+    // Session store or destroy method not available, send an error response
+    console.error("Session store or destroy method not available");
+    res.status(500).send("Error revoking session");
+  }
+});
+
 // Function to check if the user is an admin and redirect them accordingly
 function check_admin(req, res) {
   if (req.user.role === 'admin') {
