@@ -9,13 +9,13 @@ let remindersController = {
   // Renders the reminder index page with the list of reminders from the database
   list: (req, res) => {
     let user = req.user
-    res.render("reminder/index", { reminders: user.reminders });
+    res.render("reminder/index", { reminders: user.reminders, role: req.user.role});
   },
 
   // GET /reminders/new
   // Renders the reminder create page
   new: (req, res) => {
-    res.render("reminder/create");
+    res.render("reminder/create", { role: req.user.role });
   },
 
   // GET /reminders/:id
@@ -28,9 +28,9 @@ let remindersController = {
       return reminder.id == reminderToFind;
     });
     if (searchResult != undefined) {
-      res.render("reminder/single-reminder", { reminderItem: searchResult });
+      res.render("reminder/single-reminder", { reminderItem: searchResult, role: req.user.role });
     } else {
-      res.render("reminder/index", { reminders: user.reminders });
+      res.render("reminder/index", { reminders: user.reminders, role: req.user.role });
     }
   },
 
@@ -57,7 +57,7 @@ let remindersController = {
     let searchResult = user.reminders.find(function (reminder) {
       return reminder.id == reminderToFind;
     });
-    res.render("reminder/edit", { reminderItem: searchResult });
+    res.render("reminder/edit", { reminderItem: searchResult, role: req.user.role });
   },
 
   // PUT /reminders/:id

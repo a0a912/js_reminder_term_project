@@ -18,6 +18,10 @@
 
       <!-- Link to create a new reminder -->
       <a class="nav-item nav-link" href="/reminder/new">Create</a>
+      <!-- Conditional link based on user role -->
+      <% if (role === 'admin') { %>
+        <a class="nav-item nav-link" href="/admin">Admin</a>
+      <% } %>
     </div>
   </div>
 </nav>

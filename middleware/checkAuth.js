@@ -14,7 +14,7 @@ module.exports = {
     if (!req.isAuthenticated()) {
       return next();  // Move to the next middleware
     }
-    res.redirect("/reminders");  // Redirect to the reminders
+    res.redirect("/dashboard");  // Redirect to the dashboard
   },
 
   // Middleware to check if the user is an admin
@@ -22,6 +22,6 @@ module.exports = {
     if (req.user && req.user.role === 'admin') {
       return next();  // Move to the next middleware
     }
-    res.redirect("/admin"); // Redirect to the admin page
+    res.status(403).send("Access denied"); // Send a 403 Forbidden status and message
   }
 };

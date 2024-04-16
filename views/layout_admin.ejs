@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Admin Page</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+    <% include("./partials/navbar.ejs") %>
+    <div class="container">
+        <h1 class="mt-4">Admin Dashboard</h1>
+        <p class="lead mb-3">Welcome Admin <%= user.name %></p>
+        <form id="logoutForm" action="/logout" method="POST">
+            <button type="submit" class="btn btn-secondary">Logout</button>
+        </form>
+        <% if (sessionStore && sessionStore.sessions) { %>
+            <% Object.keys(sessionStore.sessions).forEach(sessionId => { %>
+                <% const sessionData = JSON.parse(sessionStore.sessions[sessionId]); %>
+                <div class="session-info">
+                    <h2>Session Information</h2>
+                    <strong>Session ID:</strong> <%= sessionId %><br>
+                    <strong>User ID:</strong> <%= sessionData.passport.user.id %><br>
+                    <strong>Name</strong> <%= sessionData.passport.user.name %><br>
+                    <form id="revokeForm<%= sessionId %>" action="/revoke-session/<%= sessionId %>" method="POST" style="display: inline;">
+                        <input type="hidden" name="sessionId" value="<%= sessionId %>">
+                        <button type="submit" class="btn btn-danger" onclick="confirmRevoke('<%= sessionId %>')">Revoke Session</button>
+                    </form>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <p>No active sessions found.</p>
+        <% } %>
+
+    </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</body>
+</html>
