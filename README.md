@@ -16,9 +16,13 @@ Ahmed Ali:
 
 -Implemented Database Function and logic
 
--Implemented Passport. -Implemented Login -Reworked Database to Match Prof's code. -Yeah. We're all caught up
+-Implemented Passport. -Implemented Login 
+
+-Reworked Database to make your lives easier.
 
 -Implemented logout button
+
+-Resolved 15 Merge Conflicts 4 times (Main branch really hated test's files for some reason).
 
 Caleb Campbell
 =======
