@@ -12,8 +12,6 @@ async function keywordToImage(keyword) {
   return imageUrl;
 }
 
-let { Database, userModel } = require("../database");
-
 // user = userModel.findOne("person2");
 // Defining the remindersController object
 let remindersController = {
@@ -49,7 +47,7 @@ let remindersController = {
   // POST /reminders
   // Creates a new reminder with the provided title and description and adds it to the database
   // Redirects to the reminders index page
-  create: (req, res) => {
+  create: async (req, res) => {
     let user = req.user
     let reminder = {
       id: user.reminders.length + 1,
@@ -57,7 +55,7 @@ let remindersController = {
       description: req.body.description,
       completed: false,
       keyword: req.body.keyword,
-      banner: keywordToImage(req.body.keyword)
+      banner: await keywordToImage(req.body.keyword)
     };
     user.reminders.push(reminder);
     res.redirect("/reminders");
