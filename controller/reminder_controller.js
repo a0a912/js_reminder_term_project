@@ -4,6 +4,7 @@ let database = require("../database").Database;
 async function keywordToImage(keyword) {
   // Make sure to register for a token at https://unsplash.com/developers
   // Notion uses unsplash for their banner images, so we'll use that too
+  const accessKey = 'ePqhPGL-j9HcEoYcR0e29BsYPvOqzQ1SEne4a7vRMN4';
   const url = `https:api.unsplash.com/search/photos?query=${keyword}&client_id=0-m3L1XIVg9tJ5bs_a_uFAlkWvlmR0l5P-PSG7n8BZU&per_page=1`
   const response = await fetch(url);
   const data = await response.json();
