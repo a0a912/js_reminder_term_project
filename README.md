@@ -30,3 +30,7 @@ Alvin Sin:
 -Implemented Delete Function (First Step without changing the DB) -Implemented Update Function (First Step without changing the DB)
 
 -Implemented Update function
+
+Philip Dahl
+=======
+-Implemented the bonus component (keyword to image when creating a reminder)
