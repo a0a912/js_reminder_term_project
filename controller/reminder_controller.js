@@ -1,6 +1,16 @@
 // Importing the database module
 let database = require("../database").Database;
-let { Database, userModel } = require("../database");
+
+async function keywordToImage(keyword) {
+  // Make sure to register for a token at https://unsplash.com/developers
+  // Notion uses unsplash for their banner images, so we'll use that too
+  const accessKey = 'ePqhPGL-j9HcEoYcR0e29BsYPvOqzQ1SEne4a7vRMN4';
+  const url = `https:api.unsplash.com/search/photos?query=${keyword}&client_id=${accessKey}&per_page=1`
+  const response = await fetch(url);
+  const data = await response.json();
+  const imageUrl = data.results[0].urls.regular;
+  return imageUrl;
+}
 
 // user = userModel.findOne("person2");
 // Defining the remindersController object
@@ -37,13 +47,15 @@ let remindersController = {
   // POST /reminders
   // Creates a new reminder with the provided title and description and adds it to the database
   // Redirects to the reminders index page
-  create: (req, res) => {
+  create: async (req, res) => {
     let user = req.user
     let reminder = {
       id: user.reminders.length + 1,
       title: req.body.title,
       description: req.body.description,
       completed: false,
+      keyword: req.body.keyword,
+      banner: await keywordToImage(req.body.keyword)
     };
     user.reminders.push(reminder);
     res.redirect("/reminders");
